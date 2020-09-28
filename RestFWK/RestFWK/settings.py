@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -70,22 +71,60 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'RestFWK.wsgi.application'
+POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
+POSTGRES_DB = os.getenv('POSTGRES_DB')
+POSTGRES_USER = os.getenv('POSTGRES_USER')
 
-
+print(POSTGRES_DB)
+print(POSTGRES_PASSWORD)
+print(POSTGRES_USER)
+# print("password" + os.getenv('POSTGRES_PASSWORD'),
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'posts',
-        'USER': 'root',
-        'PASSWORD': 'hae9emoht7keith5eeghohfai4pig8Oo',
-        'HOST': '127.0.0.1',
-        'PORT': 3306
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'posts',
+    #     'USER': 'root',
+    #     'PASSWORD': 'beR1quai9fae6EekohVa4piezahpoo0r',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': 3306
+    #
+    # }
 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.environ.get('DB_NAME'),
+    #     'USER': os.environ.get('DB_USER'),
+    #     'PASSWORD': os.environ.get('DB_PASSWORD'),
+    #     'HOST': 'db',
+    #     'PORT': 5432
+    # }
+    # DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'postgres',
+    #     'HOST': 'db',
+    #     'PORT': 5432,
+    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432
     }
 }
+
+
 
 
 # Password validation
@@ -125,3 +164,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
