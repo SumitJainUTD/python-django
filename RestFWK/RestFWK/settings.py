@@ -125,7 +125,7 @@ DATABASES = {
 }
 
 
-ALLOWED_HOSTS =['ec2-3-135-230-135.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS =['ec2-3-135-230-135.us-east-2.compute.amazonaws.com', '127.0.0.1']
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
